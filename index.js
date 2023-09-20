@@ -16,9 +16,21 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
-  // kodlar buraya
+function dosyaAdiniBul(path) {
+  let lastIndexOfSlash = path.lastIndexOf('/');
+  return path.slice(lastIndexOfSlash+1);
+
+  let splittedPath = path.pslit('/');
+  return splittedPath.at(-1) // gets last index of an array // cozum 1
 }
+
+/*
+function dosyaAdiniBul(path) {
+  //return path.slice(path.lastIndexOf('/')+1);           // cozum 2
+  return path.split('/')[path.split('/').length -1 ];     // cozum 3
+}
+*/
+
 
 /*
   GÖREV 2
@@ -38,9 +50,21 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek output: 104
 */
 
-function ortalamaBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamaBul(arr) {
+  let total = 0;
+  let result = 0;
+  if (arr.length == 0){
+    return null;
+  }
+  total = arr.reduce((acc,x) => {
+    acc = acc + x;
+    return acc; 
+  }, 0);
+  result = total / arr.length;
+  console.log(result);
+  return result;
 }
+console.log(ortalamaBul([50, -26, 153, 7]));      // 33:22'de kaldım
 
 /*
   GÖREV 3
@@ -62,8 +86,21 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek output: [109, 216, 288, 143, 185, 194]
 */
 
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamadanBuyukleriBul(arr, cb) {
+  let ortalama = cb(arr);
+  let result = [];
+  if (arr.length == 0){
+    return null;
+  }
+  /*
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] >= ortalama) {
+      result.push(arr[i]);
+    }
+  }
+  return result;
+*/
+return arr.filter(x => x >= ortalama);    // tek satır olarak bu şekilde yazılabilir ancak .filter() yavaş çalışır. Comment içerisindeki code daha performanslı çalışır. 
 }
 
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
